@@ -1,0 +1,36 @@
+{
+  "name": "twitter-bottom-nav",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format:check": "prettier --check .",
+    "format": "prettier --write . --list-different"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "framer-motion": "^10.16.4",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@iconify/react": "^4.1.1",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "autoprefixer": "latest",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "latest",
+    "postcss": "latest",
+    "prettier": "3.0.3",
+    "tailwindcss": "latest",
+    "typescript": "latest"
+  }
+}
