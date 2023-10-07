@@ -1,5 +1,7 @@
-import React from "react";
-import MaxWidthWrapper from "./max-width-wrapper";
+import React from 'react';
+
+import MaxWidthWrapper from './max-width-wrapper';
+
 const Domains = () => {
   const numberOfDivs = 3;
 
@@ -9,7 +11,7 @@ const Domains = () => {
       <div
         key={i}
         className="h-20 w-full bg-zinc-950 rounded-lg  border border-zinc-800 mt-8"
-      ></div>
+      ></div>,
     );
   }
 

@@ -1,5 +1,6 @@
-import React from "react";
-import MaxWidthWrapper from "./max-width-wrapper";
+import React from 'react';
+
+import MaxWidthWrapper from './max-width-wrapper';
 
 const Overview = () => {
   const numberOfDivs = 9;
@@ -10,7 +11,7 @@ const Overview = () => {
       <div
         key={i}
         className="p-4 h-64 border rounded border-zinc-800 bg-zinc-950"
-      ></div>
+      ></div>,
     );
   }
   return (

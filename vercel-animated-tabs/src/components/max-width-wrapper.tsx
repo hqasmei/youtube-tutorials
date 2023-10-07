@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
 const MaxWidthWrapper = ({ children }: { children: ReactNode }) => {
   return (

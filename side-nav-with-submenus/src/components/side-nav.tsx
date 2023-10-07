@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React from "react";
-import { SIDENAV_ITEMS } from "@/constants";
-import { useState } from "react";
-import { Icon } from "@iconify/react";
-import { SideNavItem } from "@/types";
-import { usePathname } from "next/navigation";
+import React, { useState } from 'react';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { SIDENAV_ITEMS } from '@/constants';
+import { SideNavItem } from '@/types';
+import { Icon } from '@iconify/react';
 
 const SideNav = () => {
   return (
@@ -46,7 +47,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
           <button
             onClick={toggleSubMenu}
             className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between hover:bg-zinc-100 ${
-              pathname.includes(item.path) ? "bg-zinc-100" : ""
+              pathname.includes(item.path) ? 'bg-zinc-100' : ''
             }`}
           >
             <div className="flex flex-row space-x-4 items-center">
@@ -54,7 +55,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
               <span className="font-semibold text-xl  flex">{item.title}</span>
             </div>
 
-            <div className={`${subMenuOpen ? "rotate-180" : ""} flex`}>
+            <div className={`${subMenuOpen ? 'rotate-180' : ''} flex`}>
               <Icon icon="lucide:chevron-down" width="24" height="24" />
             </div>
           </button>
@@ -67,7 +68,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
                     key={idx}
                     href={subItem.path}
                     className={`${
-                      subItem.path === pathname ? "font-bold" : ""
+                      subItem.path === pathname ? 'font-bold' : ''
                     }`}
                   >
                     <span>{subItem.title}</span>
@@ -81,7 +82,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         <Link
           href={item.path}
           className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 ${
-            item.path === pathname ? "bg-zinc-100" : ""
+            item.path === pathname ? 'bg-zinc-100' : ''
           }`}
         >
           {item.icon}

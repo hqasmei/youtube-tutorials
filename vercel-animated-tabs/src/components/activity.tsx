@@ -1,5 +1,4 @@
-import React from "react";
-import MaxWidthWrapper from "./max-width-wrapper";
+import React from 'react';
 
 const Activity = () => {
   return (

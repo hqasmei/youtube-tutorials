@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import useScrollingEffect from '@/hook/use-scroll';
 import { useTabs } from '@/hook/use-tabs';
-import { Framer } from '@/lib/framer'; 
+import { Framer } from '@/lib/framer';
 
 import FollowingPage from './following';
 import ForYouPage from './for-you';
@@ -37,7 +37,7 @@ const HomeFeed = () => {
         className={`flex flex-col border-b border-zinc-700 sticky inset-x-0 pt-2 top-0 z-30 w-full transition-all backdrop-blur-xl  ${headerClass} md:translate-y-0`}
       >
         <span className=" flex px-4 font-bold text-2xl">Home</span>
-        
+
         <div className="flex flex-row w-full items-center justify-around mt-4">
           <Framer.Tabs {...framer.tabProps} />
         </div>

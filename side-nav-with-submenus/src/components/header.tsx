@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import Image from "next/image";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import Link from 'next/link';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
-import useScroll from "@/hooks/use-scroll";
-import { cn } from "@/lib/utils";
+import useScroll from '@/hooks/use-scroll';
+import { cn } from '@/lib/utils';
 
 const Header = () => {
   const scrolled = useScroll(5);
@@ -18,9 +17,9 @@ const Header = () => {
       className={cn(
         `sticky inset-x-0 top-0 z-30 w-full transition-all border-b border-gray-200`,
         {
-          "border-b border-gray-200 bg-white/75 backdrop-blur-lg": scrolled,
-          "border-b border-gray-200 bg-white": selectedLayout,
-        }
+          'border-b border-gray-200 bg-white/75 backdrop-blur-lg': scrolled,
+          'border-b border-gray-200 bg-white': selectedLayout,
+        },
       )}
     >
       <div className="flex h-[47px] items-center justify-between px-4">

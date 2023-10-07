@@ -1,12 +1,12 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
-import { Tab } from "@/hooks/use-tabs";
-import classNames from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
+import { Tab } from '@/hooks/use-tabs';
+import classNames from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const transition = {
-  type: "tween",
-  ease: "easeOut",
+  type: 'tween',
+  ease: 'easeOut',
   duration: 0.15,
 };
 
@@ -22,7 +22,7 @@ const Tabs = ({
   setSelectedTab,
 }: Props): JSX.Element => {
   const [buttonRefs, setButtonRefs] = useState<Array<HTMLButtonElement | null>>(
-    []
+    [],
   );
 
   useEffect(() => {
@@ -51,11 +51,11 @@ const Tabs = ({
           <motion.button
             key={i}
             className={classNames(
-              "text-lg relative rounded-md flex items-center h-10 px-4 z-20 bg-transparent  cursor-pointer select-none transition-colors hover:text-white mb-0.5",
+              'text-lg relative rounded-md flex items-center h-10 px-4 z-20 bg-transparent  cursor-pointer select-none transition-colors hover:text-white mb-0.5',
               {
-                "text-white/60": !isActive, // Default color for non-active tabs
-                "text-white/90": isActive, // Color for active tabs
-              }
+                'text-white/60': !isActive, // Default color for non-active tabs
+                'text-white/90': isActive, // Color for active tabs
+              },
             )}
             ref={(el) => (buttonRefs[i] = el)}
             onPointerEnter={() => {
@@ -71,12 +71,12 @@ const Tabs = ({
             {item.label}
           </motion.button>
         );
-      } )}
-      
+      })}
+
       <AnimatePresence>
         {hoveredRect && navRect && (
           <motion.div
-            key={"hover"}
+            key={'hover'}
             className="absolute p-1 mb-1 z-10 top-0 left-0 rounded-md bg-zinc-200 dark:bg-zinc-800 "
             initial={{
               x: hoveredRect.left - navRect.left,
@@ -103,11 +103,11 @@ const Tabs = ({
           />
         )}
       </AnimatePresence>
-      
+
       {selectedRect && navRect && (
         <motion.div
           className={
-            "absolute z-10 bottom-0 left-0.5 h-[3px] bg-zinc-700 dark:bg-zinc-200"
+            'absolute z-10 bottom-0 left-0.5 h-[3px] bg-zinc-700 dark:bg-zinc-200'
           }
           initial={false}
           animate={{

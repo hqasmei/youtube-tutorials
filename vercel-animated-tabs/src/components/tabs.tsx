@@ -1,39 +1,40 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Framer } from "@/lib/framer";
-import { useTabs } from "@/hooks/use-tabs";
+import React, { useState } from 'react';
 
-import Overview from "./overview";
-import Integrations from "./integrations";
-import Activity from "./activity";
-import Domains from "./domains";
+import { useTabs } from '@/hooks/use-tabs';
+import { Framer } from '@/lib/framer';
+
+import Activity from './activity';
+import Domains from './domains';
+import Integrations from './integrations';
+import Overview from './overview';
 
 const Tabs = () => {
   const [hookProps] = useState({
     tabs: [
       {
-        label: "Overview",
+        label: 'Overview',
         children: <Overview />,
-        id: "Overview",
+        id: 'Overview',
       },
       {
-        label: "Integrations",
+        label: 'Integrations',
         children: <Integrations />,
-        id: "Integrations",
+        id: 'Integrations',
       },
       {
-        label: "Activity",
+        label: 'Activity',
         children: <Activity />,
-        id: "Activity",
+        id: 'Activity',
       },
       {
-        label: "Domains",
+        label: 'Domains',
         children: <Domains />,
-        id: "Domains",
+        id: 'Domains',
       },
     ],
-    initialTabId: "Matches",
+    initialTabId: 'Matches',
   });
   const framer = useTabs(hookProps);
 
