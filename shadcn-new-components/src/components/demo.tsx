@@ -16,24 +16,27 @@ export default function Demo() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center space-y-10 px-6 md:p-20 bg-gray-100">
-      <div className="flex flex-row space-x-2">
-        {filter.map((item, idx) => {
-          return (
-            <span
-              key={idx}
-              onClick={() => handleFilterClick(item)}
-              className={`rounded-full px-3 py-1  border hover:bg-blue-500 hover:text-white duration-200 ${
-                activeFilter === item
-                  ? "bg-blue-500 text-white"
-                  : "bg-white text-black"
-              }`}
-            >
-              {item}
-            </span>
-          );
-        })}
+    <div className="flex flex-col space-y-10 justify-center  pt-10 md:p-20 items-center">
+      <div className="overflow-x-auto no-scrollbar flex w-full items-center sm:justify-center">
+        <div className="flex flex-row space-x-2 px-4">
+          {filter.map((item, idx) => {
+            return (
+              <span
+                key={idx}
+                onClick={() => handleFilterClick(item)}
+                className={`rounded-full px-3 py-1  border hover:bg-blue-500 hover:text-white duration-200 ${
+                  activeFilter === item
+                    ? "bg-blue-500 text-white"
+                    : "bg-white text-black"
+                }`}
+              >
+                {item}
+              </span>
+            );
+          })}
+        </div>
       </div>
+
       {activeFilter === "Carousel" && <CarouselDemo />}
       {activeFilter === "Drawer" && <DrawerDemo />}
       {activeFilter === "Pagination" && <PaginationDemo />}
