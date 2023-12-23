@@ -41,24 +41,24 @@ function DrawerSetup() {
   const [open, setOpen] = React.useState(false);
   const { isDesktop } = useMediaQuery();
 
-  if (isDesktop) {
-    return (
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you are done.
-            </DialogDescription>
-          </DialogHeader>
-          <ProfileForm />
-        </DialogContent>
-      </Dialog>
-    );
-  }
+  // if (isDesktop) {
+  //   return (
+  //     <Dialog open={open} onOpenChange={setOpen}>
+  //       <DialogTrigger asChild>
+  //         <Button variant="outline">Edit Profile</Button>
+  //       </DialogTrigger>
+  //       <DialogContent className="sm:max-w-[425px]">
+  //         <DialogHeader>
+  //           <DialogTitle>Edit profile</DialogTitle>
+  //           <DialogDescription>
+  //             Make changes to your profile here. Click save when you are done.
+  //           </DialogDescription>
+  //         </DialogHeader>
+  //         <ProfileForm />
+  //       </DialogContent>
+  //     </Dialog>
+  //   );
+  // }
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
