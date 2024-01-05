@@ -61,7 +61,7 @@ export default function ClientPagination() {
       setIsClient(true);
     } else {
       // If data is not present, generate new data and store it in localStorage
-      const newData = Array.from({ length: 15 }, generateFakeData);
+      const newData = Array.from({ length: 50 }, generateFakeData);
       setData(newData);
       localStorage.setItem("fakeUserData", JSON.stringify(newData));
       setIsClient(true);
@@ -112,7 +112,6 @@ export default function ClientPagination() {
     </>
   );
 }
-
 function PaginationSection({
   totalPosts,
   postsPerPage,
@@ -124,12 +123,21 @@ function PaginationSection({
   currentPage: any;
   setCurrentPage: any;
 }) {
-  let pages = [];
+  const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pages.push(i);
+    pageNumbers.push(i);
   }
+
+  const maxPageNum = 5; // Maximum page numbers to display at once
+  const pageNumLimit = Math.floor(maxPageNum / 2); // Current page should be in the middle if possible
+
+  let activePages = pageNumbers.slice(
+    Math.max(0, currentPage - 1 - pageNumLimit),
+    Math.min(currentPage - 1 + pageNumLimit + 1, pageNumbers.length)
+  );
+
   const handleNextPage = () => {
-    if (currentPage < pages.length) {
+    if (currentPage < pageNumbers.length) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -139,29 +147,57 @@ function PaginationSection({
       setCurrentPage(currentPage - 1);
     }
   };
+
+  // Function to render page numbers with ellipsis
+  const renderPages = () => {
+    const renderedPages = activePages.map((page, idx) => (
+      <PaginationItem
+        key={idx}
+        className={currentPage === page ? "bg-neutral-100 rounded-md" : ""}
+      >
+        <PaginationLink onClick={() => setCurrentPage(page)}>
+          {page}
+        </PaginationLink>
+      </PaginationItem>
+    ));
+
+    // Add ellipsis at the start if necessary
+    if (activePages[0] > 1) {
+      renderedPages.unshift(
+        <PaginationEllipsis
+          key="ellipsis-start"
+          onClick={() => setCurrentPage(activePages[0] - 1)}
+        />
+      );
+    }
+
+    // Add ellipsis at the end if necessary
+    if (activePages[activePages.length - 1] < pageNumbers.length) {
+      renderedPages.push(
+        <PaginationEllipsis
+          key="ellipsis-end"
+          onClick={() =>
+            setCurrentPage(activePages[activePages.length - 1] + 1)
+          }
+        />
+      );
+    }
+
+    return renderedPages;
+  };
+
   return (
     <div>
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious onClick={() => handlePrevPage()} />
+            <PaginationPrevious onClick={handlePrevPage} />
           </PaginationItem>
 
-          {pages.map((page, idx) => (
-            <PaginationItem
-              key={idx}
-              className={
-                currentPage === page ? "bg-neutral-100 rounded-md" : ""
-              }
-            >
-              <PaginationLink onClick={() => setCurrentPage(page)}>
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
+          {renderPages()}
 
           <PaginationItem>
-            <PaginationNext onClick={() => handleNextPage()} />
+            <PaginationNext onClick={handleNextPage} />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
