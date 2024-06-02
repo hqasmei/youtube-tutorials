@@ -1,5 +1,6 @@
-import Image from 'next/image';
+import React from 'react';
 
+import { FolderIcon } from '@/components/folder-icon';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function Home() {
@@ -13,6 +14,9 @@ export default function Home() {
         <span className="text-2xl font-medium  text-neutral-600 dark:text-neutral-400">
           Hello world!
         </span>
+      </div>
+      <div>
+        <FolderIcon />
       </div>
     </main>
   );

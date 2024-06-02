@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     // Redirect to the desired URL
-    router.replace('http://localhost:3000/blog');
+    router.replace('http://localhost:3000/posts');
   }, [router]);
 
   // Return null since we are redirecting
