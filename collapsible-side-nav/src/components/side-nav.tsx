@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { NavItems } from '@/config';
+import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function SideNav() {
@@ -21,11 +22,12 @@ export default function SideNav() {
   };
   return (
     <div
-      className={` ${
-        isSidebarExpanded ? 'w-[200px]' : 'w-[68px]'
-      }   border-r transition-all duration-300 ease-in-out transform hidden sm:flex h-fill`}
+      className={cn(
+        isSidebarExpanded ? 'w-[200px]' : 'w-[68px]',
+        'border-r transition-all duration-300 ease-in-out transform hidden sm:flex h-fill',
+      )}
     >
-      <aside className="flex h-full flex-col w-full break-words px-4   overflow-x-hidden columns-1 ">
+      <aside className="flex h-full flex-col w-full break-words px-4   overflow-x-hidden columns-1">
         {/* Top */}
         <div className="mt-4 relative pb-2 ">
           <div className="flex flex-col space-y-1">
@@ -69,7 +71,7 @@ export default function SideNav() {
           })}
         </div>
       </aside>
-      <div className="mt-[calc(calc(50vh)-40px)] relative">
+      <div className="relative">
         <button
           type="button"
           className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center rounded-full bg-neutral-100 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"

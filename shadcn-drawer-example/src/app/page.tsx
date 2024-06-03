@@ -52,7 +52,7 @@ export default function Home() {
                 <DrawerTitle>Add person</DrawerTitle>
               </DrawerHeader>
 
-              <ScrollArea>
+              <ScrollArea className="overflow-y-auto">
                 <AddPersonForm setShowSheet={setShowSheet} />
               </ScrollArea>
             </DrawerContent>

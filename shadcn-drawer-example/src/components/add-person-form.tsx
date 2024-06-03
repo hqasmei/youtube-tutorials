@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -47,9 +46,9 @@ export default function AddPersonForm({
 
   const isLoading = form.formState.isSubmitting;
   // 4. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) { 
+  function onSubmit(values: z.infer<typeof formSchema>) {
     // Save the form values to localStorage
-    localStorage.setItem( 'personData', JSON.stringify( values ) );
+    localStorage.setItem('personData', JSON.stringify(values));
     // Reset the form
     form.reset();
     // Close the sheet
@@ -105,7 +104,7 @@ export default function AddPersonForm({
                 <Textarea
                   placeholder="Hi, I'm Lisa Simpson, an avid reader and saxophone player with a passion for environmental advocacy and social justice. I'm constantly on a quest to learn and grow, driven by my curiosity about the world and a desire to make it a better place."
                   {...field}
-                  className="text-md h-64"
+                  className="text-md h-80"
                 />
               </FormControl>
               <FormMessage />
