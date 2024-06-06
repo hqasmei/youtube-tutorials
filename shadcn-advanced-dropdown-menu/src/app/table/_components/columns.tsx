@@ -21,7 +21,7 @@ export const columns: ColumnDef<Person>[] = [
       const image = row.original.image as string;
 
       return (
-        <div className='flex items-center space-x-2'>
+        <div className="flex items-center space-x-2">
           <Avatar>
             <AvatarImage src={image} alt={name} />
             <AvatarFallback>{getInitials(name)}</AvatarFallback>

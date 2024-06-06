@@ -43,7 +43,6 @@ function Item(props: Person) {
       >
         <DeleteForm cardId={props.id} setIsOpen={setIsDeleteOpen} />
       </ResponsiveDialog>
-
       <Card className="w-full p-6 flex shadow-md relative hover:shadow-xl duration-200 transition-all">
         {/* Card Content */}
         <Link href={`/card/${props.id}`} className="h-full">
@@ -62,49 +61,50 @@ function Item(props: Person) {
             <p className="line-clamp-2">{props.description}</p>
           </div>
         </Link>
-
         {/* Dropdown Menu */}
-        <div className="flex flex-row space-x-1 items-center absolute top-4 right-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-              >
-                <MoreVertical className="h-4 w-4" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-[160px] z-50">
-              <DropdownMenuItem className="group flex w-full items-center justify-between  text-left p-0 text-sm font-base text-neutral-500 ">
-                <button
-                  onClick={() => {
-                    setIsEditOpen(true);
-                  }}
-                  className="w-full justify-start flex rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
+        <div className="absolute right-4 top-4 z-10">
+          <span>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
                 >
-                  <IconMenu
-                    text="Edit"
-                    icon={<SquarePen className="h-4 w-4" />}
-                  />
-                </button>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="group flex w-full items-center justify-between  text-left p-0 text-sm font-base text-neutral-500 ">
-                <button
-                  onClick={() => {
-                    setIsDeleteOpen(true);
-                  }}
-                  className="w-full justify-start flex text-red-500 rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
-                >
-                  <IconMenu
-                    text="Delete"
-                    icon={<Trash2 className="h-4 w-4" />}
-                  />
-                </button>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                  <MoreVertical className="h-4 w-4" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[160px] z-50">
+                <DropdownMenuItem className="group flex w-full items-center justify-between  text-left p-0 text-sm font-base text-neutral-500 ">
+                  <button
+                    onClick={() => {
+                      setIsEditOpen(true);
+                    }}
+                    className="w-full justify-start flex rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
+                  >
+                    <IconMenu
+                      text="Edit"
+                      icon={<SquarePen className="h-4 w-4" />}
+                    />
+                  </button>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="group flex w-full items-center justify-between  text-left p-0 text-sm font-base text-neutral-500 ">
+                  <button
+                    onClick={() => {
+                      setIsDeleteOpen(true);
+                    }}
+                    className="w-full justify-start flex text-red-500 rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
+                  >
+                    <IconMenu
+                      text="Delete"
+                      icon={<Trash2 className="h-4 w-4" />}
+                    />
+                  </button>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </span>
         </div>
       </Card>
     </>

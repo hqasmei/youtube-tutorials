@@ -18,9 +18,9 @@ function Item({ title, path }: { title: string; path: string }) {
 }
 export default function Home() {
   return (
-    <div className="flex flex-col max-w-3xl w-full items-center justify-center gap-4">
-      <span className="font-semibold text-2xl">
-        Shadcn Dropdowns Examples with:
+    <div className="flex flex-col max-w-3xl w-full items-center justify-center gap-10 pt-10">
+      <span className="font-semibold text-4xl text-balance max-w-xl text-center">
+        Shadcn Dropdowns with Responsive Dialog for:
       </span>
       <div className="flex flex-row gap-4 w-full ">
         <Item title="Card" path="/card" />

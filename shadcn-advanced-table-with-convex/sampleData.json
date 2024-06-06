@@ -1,0 +1,42 @@
+[
+  {
+    "fullname": "Steve Jobs",
+    "birthday": "1955-02-24"
+  },
+  {
+    "fullname": "Mark Zuckerberg",
+    "birthday": "1984-05-14"
+  },
+  {
+    "fullname": "Bill Gates",
+    "birthday": "1957-10-28"
+  },
+  {
+    "fullname": "Elon Musk",
+    "birthday": "1971-06-28"
+  },
+  {
+    "fullname": "Sundar Pichai",
+    "birthday": "1967-06-10"
+  },
+  {
+    "fullname": "Melinda Gates",
+    "birthday": "1964-08-15"
+  },
+  {
+    "fullname": "Sheryl Sandberg",
+    "birthday": "1969-08-28"
+  },
+  {
+    "fullname": "Marissa Mayer",
+    "birthday": "1975-05-30"
+  },
+  {
+    "fullname": "Susan Wojcicki",
+    "birthday": "1968-07-05"
+  },
+  {
+    "fullname": "Elizabeth Holmes",
+    "birthday": "1984-02-03"
+  }
+]
