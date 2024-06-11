@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
@@ -15,13 +15,33 @@ import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function SideNav() {
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
   const navItems = NavItems();
+
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => {
+    // Get the sidebar state from localStorage
+    const saved = window.localStorage.getItem('sidebarExpanded');
+    if (saved === null) {
+      return true;
+    }
+    const initialValue = JSON.parse(saved);
+    return initialValue;
+  });
+
+  // Save the sidebar state in localStorage
+  useEffect(() => {
+    window.localStorage.setItem(
+      'sidebarExpanded',
+      JSON.stringify(isSidebarExpanded),
+    );
+  }, [isSidebarExpanded]);
+
+  // Toggle the sidebar state
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
+ 
   return (
-    <div className='pr-4'>
+    <div className="pr-4">
       <div
         className={cn(
           isSidebarExpanded ? 'w-[200px]' : 'w-[68px]',
