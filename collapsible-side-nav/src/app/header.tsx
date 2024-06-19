@@ -8,19 +8,19 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { NavItems } from '@/config';
 import { Menu } from 'lucide-react';
 
 export default function Header() {
   const navItems = NavItems();
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6 justify-between">
       <Link
@@ -59,32 +59,33 @@ export default function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button
-          variant="link"
-          onClick={() => setIsNavOpen(!isNavOpen)}
-          className="sm:hidden"
-        >
-          <Menu className="flex sm:hidden" />
-        </Button>
+        <button onClick={() => setIsOpen(true)}>
+          <Menu size={24} />
+        </button>
 
-        {isNavOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
-            <div className="absolute right-0 top-0 left-0 bg-white h-full shadow-lg p-5">
-              <ul className="space-y-4">
-                {navItems.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    className="flex flex-row items-center gap-2"
-                  >
-                    {item.icon}
-                    <span>{item.name}</span>
-                  </Link>
-                ))}
-              </ul>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetContent side="right">
+            <div className="pt-4  overflow-y-auto h-fit w-full flex flex-col gap-1">
+              {navItems.map((navItem, idx) => (
+                <Link
+                  key={idx}
+                  href={navItem.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`h-full relative flex items-center whitespace-nowrap rounded-md ${
+                    navItem.active
+                      ? 'font-base text-sm bg-neutral-200 shadow-sm text-neutral-700 dark:bg-neutral-800 dark:text-white'
+                      : 'hover:bg-neutral-200  hover:text-neutral-700 text-neutral-500 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white'
+                  }`}
+                >
+                  <div className="relative font-base text-sm py-1.5 px-2 flex flex-row items-center space-x-2 rounded-md duration-100">
+                    {navItem.icon}
+                    <span>{navItem.name}</span>
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
-        )}
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
