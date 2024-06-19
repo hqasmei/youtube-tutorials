@@ -59,7 +59,7 @@ export default function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <button onClick={() => setIsOpen(true)}>
+        <button onClick={() => setIsOpen(true)} className='block sm:hidden'>
           <Menu size={24} />
         </button>
 
