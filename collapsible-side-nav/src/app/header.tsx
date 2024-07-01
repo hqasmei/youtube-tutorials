@@ -21,6 +21,7 @@ import { Menu } from 'lucide-react';
 export default function Header() {
   const navItems = NavItems();
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6 justify-between">
       <Link
@@ -59,12 +60,12 @@ export default function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <button onClick={() => setIsOpen(true)} className='block sm:hidden'>
+        <button onClick={() => setIsOpen(true)} className="block sm:hidden">
           <Menu size={24} />
         </button>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetContent side="right">
+          <SheetContent side="right" className='block md:hidden'>
             <div className="pt-4  overflow-y-auto h-fit w-full flex flex-col gap-1">
               {navItems.map((navItem, idx) => (
                 <Link

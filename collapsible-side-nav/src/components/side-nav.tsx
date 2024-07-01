@@ -14,43 +14,46 @@ import { NavItems } from '@/config';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+import { ThemeToggle } from './theme-toggle';
+
 export default function SideNav() {
   const navItems = NavItems();
 
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => {
-    // Get the sidebar state from localStorage
-    const saved = window.localStorage.getItem('sidebarExpanded');
-    if (saved === null) {
-      return true;
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('sidebarExpanded');
+      if (saved === null) {
+        return true;
+      }
+      return JSON.parse(saved);
     }
-    const initialValue = JSON.parse(saved);
-    return initialValue;
+    return true; // default state if window is not defined
   });
 
-  // Save the sidebar state in localStorage
   useEffect(() => {
-    window.localStorage.setItem(
-      'sidebarExpanded',
-      JSON.stringify(isSidebarExpanded),
-    );
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(
+        'sidebarExpanded',
+        JSON.stringify(isSidebarExpanded),
+      );
+    }
   }, [isSidebarExpanded]);
 
-  // Toggle the sidebar state
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
- 
+
   return (
     <div className="pr-4">
       <div
         className={cn(
           isSidebarExpanded ? 'w-[200px]' : 'w-[68px]',
-          'border-r transition-all duration-300 ease-in-out transform hidden sm:flex h-full  bg-accent',
+          'border-r transition-all duration-300 ease-in-out transform hidden sm:flex h-full bg-accent',
         )}
       >
-        <aside className="flex h-full flex-col w-full break-words px-4   overflow-x-hidden columns-1">
+        <aside className="flex h-full flex-col w-full break-words px-4 overflow-x-hidden columns-1">
           {/* Top */}
-          <div className="mt-4 relative pb-2 ">
+          <div className="mt-4 relative pb-2">
             <div className="flex flex-col space-y-1">
               {navItems.map((item, idx) => {
                 if (item.position === 'top') {
@@ -72,7 +75,8 @@ export default function SideNav() {
             </div>
           </div>
           {/* Bottom */}
-          <div className="sticky bottom-0  mt-auto whitespace-nowrap mb-4 transition duration-200 block">
+          <div className="sticky bottom-0 mt-auto whitespace-nowrap mb-4 transition duration-200 block">
+            <ThemeToggle isDropDown={true} />
             {navItems.map((item, idx) => {
               if (item.position === 'bottom') {
                 return (
@@ -95,13 +99,13 @@ export default function SideNav() {
         <div className="mt-[calc(calc(90vh)-40px)] relative">
           <button
             type="button"
-            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center rounded-full bg-neutral-100 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
+            className="absolute bottom-32 right-[-12px] flex h-6 w-6 items-center justify-center border border-muted-foreground/20 rounded-full bg-accent shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (
-              <ChevronLeft size={16} />
+              <ChevronLeft size={16} className='stroke-foreground'/>
             ) : (
-              <ChevronRight size={16} />
+              <ChevronRight size={16} className='stroke-foreground'/>
             )}
           </button>
         </div>
@@ -125,7 +129,7 @@ export const SideNavItem: React.FC<{
           className={`h-full relative flex items-center whitespace-nowrap rounded-md ${
             active
               ? 'font-base text-sm bg-neutral-200 shadow-sm text-neutral-700 dark:bg-neutral-800 dark:text-white'
-              : 'hover:bg-neutral-200  hover:text-neutral-700 text-neutral-500 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white'
+              : 'hover:bg-neutral-200 hover:text-neutral-700 text-neutral-500 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white'
           }`}
         >
           <div className="relative font-base text-sm py-1.5 px-2 flex flex-row items-center space-x-2 rounded-md duration-100">
@@ -141,7 +145,7 @@ export const SideNavItem: React.FC<{
                 href={path}
                 className={`h-full relative flex items-center whitespace-nowrap rounded-md ${
                   active
-                    ? 'font-base text-sm  bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-white'
+                    ? 'font-base text-sm bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-white'
                     : 'hover:bg-neutral-200 hover:text-neutral-700 text-neutral-500 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white'
                 }`}
               >
