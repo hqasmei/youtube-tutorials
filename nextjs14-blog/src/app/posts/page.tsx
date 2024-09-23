@@ -10,7 +10,9 @@ export const metadata = {
 };
 
 export default async function PostsPage() {
-  let allPosts = getPosts();
-
+  let allPosts = await  getPosts();
+  if (!allPosts || allPosts.length === 0) {
+    return <div>No posts available</div>;
+  }
   return <Posts allPosts={allPosts} />;
 }

@@ -1,13 +1,11 @@
 'use client';
 
-import React from 'react';
-
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-
 import { reformatDate } from '@/lib/utils';
 
-export default function Posts({ allPosts }: { allPosts: any }) {
+function PostsContent({ allPosts }: { allPosts: any }) {
   const searchParams = useSearchParams();
   const tag = searchParams.get('tag');
 
@@ -20,7 +18,7 @@ export default function Posts({ allPosts }: { allPosts: any }) {
       <div className="grid grid-cols-1 gap-10 pb-10">
         <div className="flex flex-col">
           <span className="text-4xl font-bold md:px-6 mb-6 md:mb-4">
-          My Blog
+            My Blog
           </span>
 
           <div>
@@ -73,5 +71,13 @@ export default function Posts({ allPosts }: { allPosts: any }) {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Posts({ allPosts }: { allPosts: any }) {
+  return (
+    <Suspense fallback={<div>Loading posts...</div>}>
+      <PostsContent allPosts={allPosts} />
+    </Suspense>
   );
 }
